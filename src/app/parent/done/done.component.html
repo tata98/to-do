@@ -1,0 +1,7 @@
+<div class="card-body border m-2 d-flex align-items-center justify-content-between">
+  <div>
+    <h5 class="card-title">{{ task.name }}</h5>
+    <span class="badge bg-secondary">{{ task.difficulty }}</span>
+  </div>
+  <button class="btn text-primary" (click)="movetoProgress()"><i class="bi bi-arrow-left-circle-fill"></i></button>
+</div>

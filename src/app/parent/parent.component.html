@@ -1,0 +1,46 @@
+<div class="container mt-5" >
+  <div class="d-flex w-50">
+    <input class="form-control" placeholder="enter task name" type="text" [(ngModel)]="taskName" />
+    <select class="form-select w-50 mx-2" [(ngModel)]="difficulty">
+      <option selected value="easy">easy</option>
+      <option value="medium">medium</option>
+      <option value="difficult">difficult</option>
+    </select>
+    <button class="btn btn-primary " (click)="addTask()">add</button>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <div class="card pb-3 border">
+        <div class="card-header">To-Do</div>
+        <app-to-do
+          *ngFor="let task of toDos"
+          [task]="task"
+          (delete)="onDelete($event)"
+          (moveToInProgress)="moveToInProgress($event)">
+        </app-to-do>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card pb-3 border">
+        <div class="card-header">In Progress</div>
+        <app-in-progress
+          *ngFor="let task of inProgress"
+          [task]="task"
+          (moveToTodo)="moveToTodos($event)"
+          (moveTodone)="moveToDone($event)">
+        </app-in-progress>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card pb-3 border">
+        <div class="card-header">Done</div>
+        <app-done
+          *ngFor="let task of Done"
+          [task]="task"
+          (moveToProgress)="moveToProgress($event)">
+        </app-done>
+      </div>
+    </div>
+  </div>
+</div>
